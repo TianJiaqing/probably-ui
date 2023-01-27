@@ -1,1 +1,1 @@
-组件库源码位置在sec/package下
+组件库源码位置在src/package下
