@@ -1,1 +1,1 @@
-# quick-ui
+组件库源码位置在sec/package下
