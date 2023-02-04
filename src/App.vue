@@ -22,6 +22,7 @@
     <loading _type="round"></loading>
     <loading _type=""></loading>
     <loading _type="particle"></loading>
+    <btn @click="DiaLog({_title:'我不想起标题'})">起飞</btn>
 
   </div>
 </template>
@@ -37,6 +38,7 @@ import switchcom from './package/switch/index.vue'
 import { message } from './package/message/index.js'
 import loading from './package/loading/index.vue'
 import { ref } from "vue";
+import { DiaLog } from './package/dialog/index.js'
 const flg = ref(true)
 const fn = (a, b) => {
   console.log('fn');
