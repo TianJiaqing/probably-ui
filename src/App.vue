@@ -1,5 +1,6 @@
 <template>
   <div class="app">
+    <!-- <dialogCom></dialogCom> -->
     <btn @click="fn">起飞</btn>
     <btn @click="fn" _type="default">起飞</btn>
     <btn @click="fn" _type="warning">起飞</btn>
@@ -11,7 +12,7 @@
     <inputdiv _type="text" v-model="num" ref="input" _title="账号"></inputdiv>
     <btngroup :_data='arr2' @click="fn"></btngroup>
     <messageCom>服务器错误</messageCom>
-    <backTop>服务器错误</backTop>
+    <backTop></backTop>
 
     <button @click="message({ _title: '服务器傻逼；', _type: 'fail' })">生产message</button>
     <elipsis :_line="1" :_width="'400px'">噜啦噜啦嘞绿绿噜啦噜啦嘞绿绿绿绿绿绿绿绿绿噜啦噜啦嘞绿绿绿绿绿绿绿绿绿噜啦噜啦嘞绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿</elipsis>
@@ -22,8 +23,16 @@
     <loading _type="round"></loading>
     <loading _type=""></loading>
     <loading _type="particle"></loading>
-    <btn @click="DiaLog({_title:'我不想起标题'})">起飞</btn>
-
+    <btn @click="DiaLog({ _title: '我不想起标题', _content: '我是内容' })">起飞</btn>
+    <btn @click="flgDia = !flgDia">起飞</btn>
+    <dialogCom _title='我不想起标题' v-if="flgDia" @_click="_click">
+      <div>
+        <p>田家庆</p>
+        <p>来来来</p>
+      </div>
+    </dialogCom>
+    <linkCom></linkCom>
+    <checkbox :_half="true" @_click="checkboxFn"></checkbox>
   </div>
 </template>
 
@@ -37,9 +46,17 @@ import elipsis from './package/ellipsis/index.vue'
 import switchcom from './package/switch/index.vue'
 import { message } from './package/message/index.js'
 import loading from './package/loading/index.vue'
-import { ref } from "vue";
+import dialogCom from './package/dialog/index.vue'
+import checkbox from './package/checkbox/index.vue'
+
 import { DiaLog } from './package/dialog/index.js'
+import { ref } from "vue";
 const flg = ref(true)
+const flgDia = ref(false)
+const _click = (a) => {
+  console.log(a);
+  flgDia.value = false
+}
 const fn = (a, b) => {
   console.log('fn');
   if (a === '获取') {
@@ -82,6 +99,9 @@ const arr2 = [
   'clear'
 ]
 const num = ref('tjq')
+const checkboxFn = (e) => {
+  console.log(e);
+}
 </script>
 
 <style scoped lang="scss">
