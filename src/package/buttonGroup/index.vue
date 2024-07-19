@@ -1,8 +1,8 @@
 <template>
-	<div class="button_group" :class="props._class" :style="props._style">
-		<div v-for="(item, index) in props._data"
+	<div class="button_group" :class="`${_class} ${_type}`">
+		<div v-for="(item, index) in _data"
 			:class="{ focus: currentNum === index, last: (currentNum === index + 1), next: (currentNum === index - 1) }"
-			@click="_click(item, index)">
+			:key="index" @click="_click(item, index)">
 			{{ key(item) }}
 		</div>
 	</div>
@@ -13,36 +13,53 @@ export default {
 }
 </script>
 <script setup>
+import data from '../data/index'
 import { computed, ref } from "vue";
 const props = defineProps({
+	//按钮组数据
 	_data: {
 		type: Array,
 		default: () => []
 	},
+	//指定渲染的key值
 	_key: {
 		type: String,
 		default: ''
 	},
+	//按钮组class
 	_class: {
 		type: String,
 		default: ''
 	},
-	_style: {
-		default: () => ({}),
-		type: Object
+	_type: {
+		type: String,
 	},
+	//是否禁用相同按钮的多次点击效果
+	_identical: {
+		type: Boolean,
+		default: true
+	},
+	//默认获取焦点的索引
+	_default: {
+		type: [String, Number],
+		default: 0
+	}
 })
+
 const emit = defineEmits([
 	'click'
 ])
+
+const currentNum = ref(Number(props._default))
+
 const _click = (item, index) => {
+	if (props._identical && currentNum == index) return
 	currentNum.value = index
 	emit('click', item, index)
 }
-const currentNum = ref(0)
 const key = (value) => {
 	if (props._key) {
-		return value[props._key]
+		return value[props._key] || data.text
 	} else {
 		return value
 	}
@@ -52,6 +69,9 @@ const key = (value) => {
 <style scoped lang="scss">
 .button_group {
 	cursor: pointer;
+	//获取焦点后的css
+	--t-bg: #18A058;
+	--t-cc: #18A058;
 
 	>div {
 		padding: 5px 15px;
@@ -66,19 +86,23 @@ const key = (value) => {
 
 	>div:last-child {
 		border-right: 1px solid;
-		border-top-right-radius: 10px;
+	}
+
+	>.round:last-child {
 		border-bottom-right-radius: 10px;
+		border-top-right-radius: 10px;
 
 	}
 
-	>div:first-child {
+	>.roundv:first-child {
 		border-top-left-radius: 10px;
 		border-bottom-left-radius: 10px;
 	}
 
 	>.focus {
-		border: 2px solid #18A058 !important;
+		border: 2px solid var(--t-bg);
 		box-shadow: 0 0 0 3px rgba(52, 213, 11, 0.1);
+		color: var(--t-cc);
 	}
 
 	.next {

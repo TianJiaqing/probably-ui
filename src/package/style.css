@@ -1,2 +1,20 @@
 
-  
+@keyframes round {
+    0% {
+      transform: rotate(0);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .inline-block{
+    display: inline-block;
+  }
+  .block{
+    display: block;
+  }
+  .inline{
+    display: inline;
+  }
