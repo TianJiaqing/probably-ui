@@ -1,12 +1,15 @@
 
 
 import { message } from './message/index.js'
+import { DiaLog } from './dialog/index.js'
+
 import "./style.css"
 
 const modules = import.meta.glob('../package/**/*.vue', { eager: true })
 
 export {
-	message
+	message,
+	DiaLog
 }
 const install = function (Vue) {
 
