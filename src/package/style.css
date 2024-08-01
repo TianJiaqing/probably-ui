@@ -1,20 +1,60 @@
-
 @keyframes round {
-    0% {
-      transform: rotate(0);
-    }
-
-    100% {
-      transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0);
   }
 
-  .inline-block{
-    display: inline-block;
+  100% {
+    transform: rotate(360deg);
   }
-  .block{
-    display: block;
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 1;
   }
-  .inline{
-    display: inline;
+
+  80% {
+    opacity: .6;
   }
+
+  100% {
+    opacity: 0;
+
+  }
+}
+
+@keyframes animate-top {
+  0% {
+    top: 80%;
+    opacity: 0;
+    transform: translateX(-50%) scale(.3);
+
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 1%;
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.block {
+  display: block;
+}
+
+.inline {
+  display: inline;
+}
+
+body {
+  --t-color: rgba(0, 128, 0, .2);
+  --t-bg: rgba(0, 128, 0, .2);
+}
