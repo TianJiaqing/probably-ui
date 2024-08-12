@@ -8,6 +8,7 @@
   }
 }
 
+/* 透明出现动画 */
 @keyframes opacity {
   0% {
     opacity: 1;
@@ -19,6 +20,37 @@
 
   100% {
     opacity: 0;
+
+  }
+}
+
+/* 透明隐藏动画 */
+@keyframes opacity_show {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: .6;
+  }
+
+  100% {
+    opacity: 1;
+
+  }
+}
+
+/* 尺寸放大出现 */
+@keyframes size_show {
+  0% {
+    transform: scale(.2);
+  }
+
+
+
+  100% {
+    transform: scale(1);
+
 
   }
 }
@@ -42,6 +74,8 @@
   }
 }
 
+
+
 .inline-block {
   display: inline-block;
 }
@@ -57,4 +91,9 @@
 body {
   --t-color: rgba(0, 128, 0, .2);
   --t-bg: rgba(0, 128, 0, .2);
+  /* 默认主题 */
+  --t-theme-color: #18a058;
+  --t-theme-bg: #fff;
+  /* 默认z-index */
+  --t-z-index: 1;
 }

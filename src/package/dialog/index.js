@@ -5,7 +5,6 @@ export const DiaLog = (obj) => {
 		const app = createApp(dialog, {
 			...obj,
 			on_click: (flg) => {
-				console.log(flg);
 				div.remove()
 				flg ? succ(flg) : fail(flg)
 			},

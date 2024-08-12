@@ -8,7 +8,7 @@ export default defineConfig({
     open: true
   },
   build: {
-    outDir: 'build', // 打包文件的输出目录
+    outDir: 'probably-ui', // 打包文件的输出目录
     terserOptions: {
       compress: {
         drop_console: false
