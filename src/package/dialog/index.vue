@@ -60,9 +60,6 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  &.background {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
   > div {
     position: relative;
     width: 400px;
@@ -81,14 +78,20 @@ onMounted(() => {
       text-indent: 2em;
     }
   }
+  &.background {
+    background-color: rgba(0, 0, 0, 0.5);
+    > div {
+      border-radius: 0 0 8px 8px;
+    }
+  }
   .line {
-    width: 200px;
+    width: 100%;
     height: 6px;
     margin: 0 auto;
     background-color: var(--t-theme-color);
-    border-radius: 5px;
+    border-radius: 8px 8px 0 0;
     position: absolute;
-    top: -3px;
+    top: -6px;
     left: 50%;
     transform: translateX(-50%);
   }

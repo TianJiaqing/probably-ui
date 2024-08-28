@@ -42,7 +42,8 @@ const checkType = (val, type) => {
         let lower_case = type.substr(1).toLowerCase()
         return Object.prototype.toString.call(val) == `[object ${upper_case + lower_case}]`
     } else {
-        return Object.prototype.toString.call(val)
+        console.warn('function:checkType warning! ', 'target:', val, 'type:', type)
+        return false
     }
 }
 
@@ -50,7 +51,7 @@ const checkType = (val, type) => {
 /**
  * recode
  * @param target - 目标内容
- * @param key - 提取吃属性名，可以传递字符、数组
+ * @param key - 提取的属性名，可以传递字符、数组
  * @param byt - 可以不用传递
  * @returns [] || {} - 拼接重组完成后的内容
  */
@@ -74,13 +75,54 @@ const recode = (target, key, byt = ',') => {
     }
     return obj
 }
+
 const init = () => {
     console.log('indt---');
 }
 
+/**
+ * getUrlParam
+ * @param url - url地址（url不能主动填写&、以及a-z A-Z 0-9 _之外的其他符号）
+ * @param key - 提取的属性名，可以传递字符、数组
+ * @returns {} || [] || String - 拼接重组完成后的内容，依据key值的填写内容决定
+ */
+const getUrlParam = (url, key) => {
+    //demo url:https://abc123.com/?param1=value1&param2=value2
+    const list = url.split('?')
+    if (list.length > 2) {
+        console.error('function:getUrlParam error!')
+        return {}
+    } else {
+        try {
+            const info = list.at(-1)
+            // const a = '=[a-zA-Z0-9_-]*'
+            const str = info.replaceAll('&', "',").replaceAll('=', ":'") + "'"
+            let fn = new Function('return {' + str + '}')
+            const res = fn()
+            fn = null
+            if (!key) {
+                return res
+            }
+            if (key && checkType(key, 'String')) {
+                return res[key]
+            } else if (key && checkType(key, 'Array')) {
+                const list = []
+                key.forEach(item => {
+                    list.push(res[item])
+                })
+                return list
+            }
+        } catch (error) {
+            console.error('function:getUrlParam error!' + error)
+            return {}
+        }
+    }
+
+}
 export default {
     useFetch,
     init,
     checkType,
-    recode
+    recode,
+    getUrlParam
 }

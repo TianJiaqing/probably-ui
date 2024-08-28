@@ -19,18 +19,44 @@
     <T-text :_line="2">
       <p>{{ data.article }}</p>
     </T-text>
+    <!-- <MyComponent v-slot="slotProps">
+  {{ slotProps.text }} {{ slotProps.count }}
+</MyComponent> -->
+    <T-list _number="99999" :_list="data.list" @_select="list_select">
+      <!-- <template v-slot="slotProps">
+        {{ slotProps.text }} {{ slotProps.count }}
+      </template> -->
+      <template #default="{ info }">
+        <div style="padding: 15px 0">
+          {{ info }}
+        </div>
+        <div v-show="info.flg" style="height: 60px; background: #999">flg</div>
+      </template>
+    </T-list>
+    <div style="height: 400px; overflow: auto">
+      <div v-for="(item, index) in data.list" :key="index" style="height: 51px">
+        {{ item }}
+      </div>
+    </div>
     <T-switch></T-switch>
     <T-backTop></T-backTop>
   </div>
 </template>
 
 <script setup>
+const slotProps = ref({
+  text: "---------",
+  count: 999,
+});
 const init = () => {
   console.log("--------------");
   // __message({'_title':'没意思'})
-  _DiaLog({_title:'123',_text:'没意思'}).then((res) => {
+  _DiaLog({ _title: "123", _text: "没意思" }).then((res) => {
     console.log("res--->>", res);
   });
+};
+const list_select = (e) => {
+  console.log("e", e);
 };
 
 console.log("__init---<<>>>>", window.__init);
