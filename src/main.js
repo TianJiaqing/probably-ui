@@ -12,15 +12,15 @@ import com2, {
     DiaLog
 } from "./package/index"
 import func from "./package/utils/index"
-let { checkType, recode } = func
+
+// let { checkType, recode } = func
+
 let arr = [1, 2, 3]
 
-console.log('--checkType', checkType([], 'array'));
-console.log("--recode(arr, '1,2')", recode(arr, '1,2'));
-console.log("--recode(arr, '1,2')", recode({ name: "1", age: '18' }, '1,2'));
 
-console.log('func))_____', func.init);
-window.__init = func.init
+
+
+// window.__init = func.init
 window.__message = message
 window._DiaLog = DiaLog
 
@@ -30,3 +30,24 @@ import App from './App.vue'
 // import 'animate.css';
 const ap = createApp(App)
 ap.use(com2).mount('#app')
+
+console.log('--checkType', _t.checkType([], 'array'));
+console.log("--recode(arr, '1,2')", _t.recode(arr, '1,2'));
+console.log("--recode(arr, '1,2')", _t.recode({ name: "1", age: '18' }, 'name'));
+console.log("--recode(arr, '1,2')", _t.recode({ name: "1", age: '18' }, 'name,age'));
+console.log("--getUrlParam", _t.getUrlParam("www.baidu.com?a=1&b=2&c=3&d=4", ['a', 'b', 'c']));
+console.log("--getUrlParam", _t.getUrlParam("www.baidu.com?a=1&b=2&c=3&d=4"));
+
+let obj = {
+    name: 1,
+    age: 18,
+    key: 2
+}
+// Object.prototype.forEach = function (e) {
+//     const list = Object.keys(this)
+//     list.forEach(item => e(item))
+// }
+// obj.forEach(item => {
+//     console.log('item', item);
+// })
+

@@ -60,7 +60,8 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  > div {
+
+  >div {
     position: relative;
     width: 400px;
     min-height: 120px;
@@ -73,25 +74,30 @@ onMounted(() => {
     flex-direction: column;
     justify-content: space-between;
     animation: size_show 0.2s ease-in forwards;
+
     .text {
       // text-align: center;
       text-indent: 2em;
     }
   }
+
   &.background {
     background-color: rgba(0, 0, 0, 0.5);
-    > div {
+
+    >div {
       border-radius: 0 0 8px 8px;
     }
   }
+
   .line {
+    --x: 4px;
     width: 100%;
-    height: 6px;
+    height: var(--x);
     margin: 0 auto;
     background-color: var(--t-theme-color);
     border-radius: 8px 8px 0 0;
     position: absolute;
-    top: -6px;
+    top: calc(var(--x) * -1);
     left: 50%;
     transform: translateX(-50%);
   }

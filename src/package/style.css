@@ -95,6 +95,8 @@ body {
   --t-theme-color: #18a058;
   --t-theme-bg: #fff;
   --t-theme-hover: rgba(0, 0, 0, .3);
+  --t-theme-shadow: rgba(52, 213, 11, 0.1);
+  --t-theme-text-color: #000;
   /* 默认z-index */
   --t-z-index: 1;
   /* 默认间距（左右） */

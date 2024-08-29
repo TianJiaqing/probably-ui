@@ -1,25 +1,12 @@
 <template>
   <T-button @click="fn">数据调试</T-button>
-  <div
-    class="t-list custom-scroll"
-    :class="{ 't-fictitious': props._type == 1 }"
-    @scroll="list_scroll"
-  >
+  <div class="t-list custom-scroll" :class="{ 't-fictitious': props._type == 1 }" @scroll="list_scroll">
     <div class="t-list-contain" ref="list_contain">
-      <div
-        v-for="(item, index) in list"
-        :key="index"
-        @click="$emit('_select', item)"
-        ref="list_ref"
-      >
+      <div v-for="(item, index) in list" :key="index" @click="$emit('_select', item)" ref="list_ref">
         <slot name="default" :info="item"></slot>
       </div>
     </div>
-    <div
-      v-if="props._type == 1"
-      class="t-fictitious-contain"
-      ref="list_fictitious"
-    ></div>
+    <div v-if="props._type == 1" class="t-fictitious-contain" ref="list_fictitious"></div>
   </div>
 </template>
 
@@ -118,17 +105,16 @@ const update_cache_info = (start = start_dom, scrollTop) => {
 
     {
       const last = index - 1 < 0 ? index : index - 1;
-      pre_ele = pre_ele.id == last ?pre_ele:{};
-      pre_ele.id == last&&  console.log('空');
+      pre_ele = pre_ele.id == last ? pre_ele : {};
+      pre_ele.id == last && console.log('空');
     }
     const h = ele_info.offsetHeight + (pre_ele ? pre_ele.h : 0);
     cache_info[id] = { id, offsetHeight, h };
   });
 
-  list_fictitious.value.style = `height:${
-    (cache_info.at(-1).h || 0) +
+  list_fictitious.value.style = `height:${(cache_info.at(-1).h || 0) +
     (props._list.length - cache_info.length) * height
-  }px;`;
+    }px;`;
 };
 
 // 设置开始、结束索引
@@ -222,21 +208,26 @@ const list_scroll = (e) => {
   // width: 100%;
   position: relative;
   --t-top: 0px;
+
   .t-list-contain {
     height: 100%;
     transform: translateY(var(--t-top));
     width: 100%;
-    > div {
+
+    >div {
       cursor: pointer;
       padding: 0 var(--t-padding);
+
       &:hover {
         background-color: var(--t-theme-hover);
       }
     }
   }
 }
+
 .t-fictitious {
   position: relative;
+
   .t-fictitious-contain {
     position: absolute;
     top: 0;
@@ -246,6 +237,7 @@ const list_scroll = (e) => {
     display: block;
     z-index: -1;
   }
+
   .t-list-contain {
     height: 100%;
     position: sticky;

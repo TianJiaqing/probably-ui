@@ -1,27 +1,23 @@
 <template>
   <div class="app">
-    <T-button _type="warning" @click="init" :_loading="_loading" _disabled
-      >button</T-button
-    >
+    <T-button _type="warning" @click="init" :_loading="_loading" _disabled>button</T-button>
     <!-- <T-button _type="warning" @click="init" :_loading="_loading">button</T-button> -->
     <T-button _type="default" @click="init">button</T-button>
-
     <T-button @click="init" :_loading="_loading">button</T-button>
     <T-button _type="error" @click="init" :_loading="_loading">button</T-button>
-    <T-buttonGroup
-      :_data="['1', '2', '3']"
-      _key="1"
-      @click="fn"
-    ></T-buttonGroup>
+    <T-buttonGroup :_data="['1', '2', '3']" _key="1" @click="fn"></T-buttonGroup>
+
     <h1>flg===>{{ time }}</h1>
     <h1>flg===>{{ flg }}</h1>
     <T-checkbox v-model="flg"></T-checkbox>
     <T-text :_line="2">
       <p>{{ data.article }}</p>
     </T-text>
+    <T-text>form={{ form }}</T-text>
+    <T-input v-model="form.txt" _title="好名字"></T-input>
     <!-- <MyComponent v-slot="slotProps">
-  {{ slotProps.text }} {{ slotProps.count }}
-</MyComponent> -->
+      {{ slotProps.text }} {{ slotProps.count }}
+    </MyComponent> -->
     <T-list _number="99999" :_list="data.list" @_select="list_select">
       <!-- <template v-slot="slotProps">
         {{ slotProps.text }} {{ slotProps.count }}
@@ -48,11 +44,19 @@ const slotProps = ref({
   text: "---------",
   count: 999,
 });
+
+const form = ref({
+  txt: ''
+})
 const init = () => {
   console.log("--------------");
-  // __message({'_title':'没意思'})
-  _DiaLog({ _title: "123", _text: "没意思" }).then((res) => {
+  
+  // _DiaLog({ _title: "123", _text: "没意思" }).then((res) => {
+  //   console.log("res--->>", res);
+  // });
+  _DiaLog({ _title: "提示", _text: "是否执行当前的删除操作？" }).then((res) => {
     console.log("res--->>", res);
+    __message({'_title':'删除成功'})
   });
 };
 const list_select = (e) => {

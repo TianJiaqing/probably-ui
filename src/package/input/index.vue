@@ -1,9 +1,12 @@
 <template>
-	<span @click="_focus" v-if="props._title">{{ props._title }}</span>
+	<span @click="_focus" :class="{ span_focus: is_focus }" v-if="props._title" :style="_title_style">{{ props._title
+		}}</span>
 	<textarea :value="props.modelValue" @input="_emit" name="" id="" cols="30" rows="10" :disabled="props._disabled"
-		v-if="props._type === 'textarea'" :class="{ dis: props._disabled }" ref="input" :style="_style"></textarea>
+		v-if="props._type === 'textarea'" :class="{ dis: props._disabled }" ref="input" :style="_style"
+		@focus="is_focus_change(true)" @blur="is_focus_change(false)"></textarea>
 	<input :type="props._type" v-else :class="{ dis: props._disabled }" :value="props.modelValue" @input="_emit"
-		:disabled="props._disabled" ref="input" :style="_style">
+		@focus="is_focus_change(true)" @blur="is_focus_change(false)" :disabled="props._disabled" ref="input"
+		:style="_style">
 </template>
 <script>
 export default {
@@ -30,13 +33,20 @@ const props = defineProps({
 		default: '',
 		type: String
 	},
+	_title_style: {
+		default: '',
+		type: String
+	},
+	_select_title: {
+		type: [Boolean, String],
+		default: true
+	},
 	// 响应式原理modelValue 搭配update:modelValue自定义事件完成双向绑定
 	modelValue: {
 		type: [Number, String, null, undefined],
 		default: ''
 	}
 })
-const _defaut = props.modelValue
 const emit = defineEmits([
 	'_input', 'update:modelValue'
 ])
@@ -44,6 +54,8 @@ const _emit = (e) => {
 	emit('_input', e.target.value)
 	emit("update:modelValue", e.target.value);
 }
+const _defaut = props.modelValue
+
 const input = ref(null)
 const _focus = () => {
 	input.value.focus()
@@ -68,6 +80,13 @@ defineExpose({
 	_reset,
 	_clear,
 })
+
+const is_focus = ref(false)
+const is_focus_change = (bool) => {
+	if (props._select_title) {
+		is_focus.value = bool
+	}
+}
 </script>
 
 <style scoped lang="scss">
@@ -78,12 +97,13 @@ textarea {
 	outline: none;
 	padding: 5px 10px;
 	margin: 5px 0;
+	color: var(--t-theme-text-color);
 }
 
 input:focus,
 textarea:focus {
-	border-color: #18A058;
-	box-shadow: 0 0 0 2px rgba(52, 213, 11, 0.1);
+	border-color: var(--t-theme-color);
+	box-shadow: 0 0 0 2px var(--t-theme-shadow);
 }
 
 .dis {
@@ -94,5 +114,9 @@ span {
 	font-size: 14px;
 	padding: 0px 5px;
 	cursor: pointer;
+
+	&.span_focus {
+		color: var(--t-theme-color);
+	}
 }
 </style>

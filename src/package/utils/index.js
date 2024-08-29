@@ -76,13 +76,11 @@ const recode = (target, key, byt = ',') => {
     return obj
 }
 
-const init = () => {
-    console.log('indt---');
-}
 
+// 为什么写这个？在处理路由页面传递的参数时，或许会有用到的场景
 /**
  * getUrlParam
- * @param url - url地址（url不能主动填写&、以及a-z A-Z 0-9 _之外的其他符号）
+ * @param url - url地址（url不能主动填写a-z A-Z 0-9 _之外的其他符号）
  * @param key - 提取的属性名，可以传递字符、数组
  * @returns {} || [] || String - 拼接重组完成后的内容，依据key值的填写内容决定
  */
@@ -119,10 +117,11 @@ const getUrlParam = (url, key) => {
     }
 
 }
+
 export default {
     useFetch,
-    init,
     checkType,
     recode,
-    getUrlParam
+    getUrlParam,
+    
 }

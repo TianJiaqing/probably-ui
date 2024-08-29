@@ -1,5 +1,5 @@
 let z = 1
-const get_z = () => z++
+const get_z = (num) => num ? z = num : z++
 let list = []
 let set_list = (num) => {
     list = []
