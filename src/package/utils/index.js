@@ -123,5 +123,4 @@ export default {
     checkType,
     recode,
     getUrlParam,
-    
 }

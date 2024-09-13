@@ -1,5 +1,6 @@
 <template>
   <div class="app">
+    <T-button @click="checkType">checkType</T-button>
     <T-button _type="warning" @click="init" :_loading="_loading" _disabled>button</T-button>
     <!-- <T-button _type="warning" @click="init" :_loading="_loading">button</T-button> -->
     <T-button _type="default" @click="init">button</T-button>
@@ -9,6 +10,14 @@
 
     <h1>flg===>{{ time }}</h1>
     <h1>flg===>{{ flg }}</h1>
+    <div style="zoom: .6;width: 50%;">
+      <T-waterfallFlow :_list="[1, 2, 3, 4, 5, 6, 7, 8, 9, 7, 1, 1, 2, 3, 4, 5,]">
+        <template #default="{ info }">
+          <p :style="`height:calc( ${info['index'] + 1}*30px);border:1px solid;padding:0;margin:0;'`">{{ info }}</p>
+        </template>
+      </T-waterfallFlow>
+    </div>
+
     <T-checkbox v-model="flg"></T-checkbox>
     <T-text :_line="2">
       <p>{{ data.article }}</p>
@@ -36,10 +45,31 @@
     </div>
     <T-switch></T-switch>
     <T-backTop></T-backTop>
+    <br />
+    <hr>
   </div>
 </template>
 
 <script setup>
+const checkType = () => {
+  // navigator.geolocation.watchPosition((res) => {
+  //     console.log('res--->', res);
+  //   })
+  let b = 'null'
+  let c = 'c'
+  let a = null
+  a ??= c
+  let obj = { name: 'tjq', age: 18, sex: '男' }
+  const { name, age, ...info } = obj
+  console.log('a--->', a);
+  console.log('info-->', info);
+  let list = [1, 2]
+  console.log(window._t.checkType(list, 'array'));//true
+  console.log(window._t.checkType(list, 'Array'));//true
+  console.log(window._t.checkType(list, 'string'));//false
+}
+
+
 const slotProps = ref({
   text: "---------",
   count: 999,
@@ -50,13 +80,13 @@ const form = ref({
 })
 const init = () => {
   console.log("--------------");
-  
+
   // _DiaLog({ _title: "123", _text: "没意思" }).then((res) => {
   //   console.log("res--->>", res);
   // });
   _DiaLog({ _title: "提示", _text: "是否执行当前的删除操作？" }).then((res) => {
     console.log("res--->>", res);
-    __message({'_title':'删除成功'})
+    __message({ '_title': '删除成功' })
   });
 };
 const list_select = (e) => {
