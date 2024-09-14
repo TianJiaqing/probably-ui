@@ -34,7 +34,7 @@ app.use(probablyUi,options).mount('#app')
 ### 代码演示
 ``` Html
 <template>
-  <div class="">
+  <div>
     <!-- TButton === T-button 两种使用方式都可以 -->
     <TButton @click="message({ _title: '服务器歇菜了；', _type: 'fail' })">别点了</TButton>
     <T-button @click="checkType">checkType</T-button>
@@ -64,7 +64,7 @@ const checkType = () => {
 方法名     | 作用 | 参数
 -------- | ------ | ---- 
 useFetch  | 使用网络请求 | 见具体文件 
-recode  | 对象解构复制之后，把解构出来的内容克隆到一个新的object或array中 | ↑
+recode  | 对象解构赋值之后，把解构出来的内容克隆到一个新的object或array中 | ↑
 getUrlParam  | 处理url地址| ↑
 ## 组件
 组件名称 | 内容
@@ -76,3 +76,4 @@ T-dialog  | 弹窗组件
 T-ellipsis | 文本组件
 T-input   | 输入框
 T-switch | 开关组件
+T-waterfallFlow | 瀑布流布局组件

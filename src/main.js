@@ -24,12 +24,12 @@ let arr = [1, 2, 3]
 window.__message = message
 window._DiaLog = DiaLog
 
-
+import router from './router/index'
 
 import App from './App.vue'
 // import 'animate.css';
-const ap = createApp(App)
-ap.use(com2).mount('#app')
+const _ = createApp(App)
+_.use(router).use(com2).mount('#app')
 
 console.log('--checkType', _t.checkType([], 'array'));
 console.log("--recode(arr, '1,2')", _t.recode(arr, '1,2'));
@@ -37,7 +37,7 @@ console.log("--recode(arr, '1,2')", _t.recode({ name: "1", age: '18' }, 'name'))
 console.log("--recode(arr, '1,2')", _t.recode({ name: "1", age: '18' }, 'name,age'));
 console.log("--getUrlParam", _t.getUrlParam("www.baidu.com?a=1&b=2&c=3&d=4", ['a', 'b', 'c']));
 console.log("--getUrlParam", _t.getUrlParam("www.baidu.com?a=1&b=2&c=3&d=4"));
-
+console.log('--getObjectStyle', _t.getObjectStyle({ fontSzie: "20px" }));
 let obj = {
     name: 1,
     age: 18,

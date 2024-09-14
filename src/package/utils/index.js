@@ -118,9 +118,30 @@ const getUrlParam = (url, key) => {
 
 }
 
+
+//为什么要写这个？每次写object赋值为style时都要恶心死我。
+/**
+ * checkType
+ * @param val - 目标内容
+ * @param type - 类型
+ * @returns true/false(目标内容是否满足当前的类型)
+ */
+const getObjectStyle = (data = {}) => {
+    const info = unref(data)
+    let css = ""
+    console.log('info--->>',info);
+    if (!checkType(info, 'Object')) return css
+    for (const key in info) {
+        css += `${key}:${info[key]};`
+    }
+    console.log('css',css);
+    return css
+}
+
 export default {
     useFetch,
     checkType,
     recode,
     getUrlParam,
+    getObjectStyle
 }
