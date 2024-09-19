@@ -66,6 +66,7 @@ const checkType = () => {
 useFetch  | 使用网络请求 | 见具体文件 
 recode  | 对象解构赋值之后，把解构出来的内容克隆到一个新的object或array中 | ↑
 getUrlParam  | 处理url地址| ↑
+getObjectStyle | Object转为css | ↑
 ## 组件
 组件名称 | 内容
 -------- | ---
