@@ -6,7 +6,7 @@
       <div v-if="!props._text">
         <slot></slot>
       </div>
-      <div v-else class="text">{{ props._text }}</div>
+      <p v-else class="text">{{ props._text }}</p>
       <div class="btn">
         <TButton @click="emitFn(false)" _type="default">取消</TButton>
         <TButton @click="emitFn(true)">确认</TButton>
@@ -63,7 +63,9 @@ onMounted(() => {
 
   >div {
     position: relative;
+    // min-width: 400px;
     width: 400px;
+
     min-height: 120px;
     background-color: var(--t-theme-bg);
     border: 2px solid rgba(0, 0, 0, 0.5);
@@ -76,7 +78,8 @@ onMounted(() => {
     animation: size_show 0.2s ease-in forwards;
 
     .text {
-      // text-align: center;
+      // 中文与英文直接产生的空白问题
+      word-break: break-all;
       text-indent: 2em;
     }
   }

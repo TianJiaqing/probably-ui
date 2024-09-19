@@ -24,6 +24,13 @@ export const routes = [
             title: "全局工具函数"
         }
     },
+    {
+        path: '/button',
+        component: () => import('../pages/button.vue'),
+        meta: {
+            title: "按钮"
+        }
+    },
 ]
 
 const router = createRouter({

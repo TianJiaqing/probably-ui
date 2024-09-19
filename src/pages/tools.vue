@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="pages_tools">
         <h3>checkType</h3>
         <hr>
         <p>list={{ list }}</p>
@@ -28,6 +28,12 @@
             <T-button @click="callback_fn('getUrlParam', ['param1', 'param2'])"
                 _type="default">getUrlParam(url,['param1','param2'])</T-button>
         </div>
+        <h3>getObjectStyle</h3>
+        <hr>
+        <p>obj={{ getObjectStyle_obj }}</p>
+        <div class="btn-div">
+            <T-button @click="callback_fn('getObjectStyle')" _type="default">getUrlParam(obj)</T-button>
+        </div>
     </div>
 </template>
 
@@ -40,14 +46,18 @@ const recode_obj = {
     name: 'tjq',
     age: 18
 }
-
 const getUrlParam_url = "https://abc123.com/?param1=value1&param2=value2"
+const getObjectStyle_obj = {
+    fontSize: "40px",
+    width: "200px",
+    height: "200px",
+}
 const callback_fn = (e, info) => {
     const _t = window._t
     const checkType = _t.checkType
     const recode = _t.recode
     const getUrlParam = _t.getUrlParam
-
+    const getObjectStyle = _t.getObjectStyle
     switch (e) {
         case "checkType":
             {
@@ -74,6 +84,13 @@ const callback_fn = (e, info) => {
             {
                 const res = getUrlParam(getUrlParam_url, info)
                 window._DiaLog({ _title: "提示", _text: `getUrlParam(url,${info})=${JSON.stringify(res)}` }).then(res => {
+                }).catch()
+            }
+            break
+        case "getObjectStyle":
+            {
+                const res = getObjectStyle(getObjectStyle_obj)
+                window._DiaLog({ _title: "提示", _text: `getObjectStyle(obj)='${res}'` }).then(res => {
                 }).catch()
             }
             break
