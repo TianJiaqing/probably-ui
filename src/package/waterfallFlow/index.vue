@@ -15,7 +15,7 @@ export default {
 }
 </script>
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 // const KEY = "t-id"
 const KEY = "index"
 
@@ -37,15 +37,24 @@ const props = defineProps({
         })
     }
 })
+const init = () => {
+    props._list.forEach((item, index) => {
+        times < props._col ? times++ : times = 0
+        let _ = { ...item }
+        _[KEY] = index
+        list_group[times] ? list_group[times].push(_) : list_group[times] = [_]
+    })
+    _group.value = list_group
+}
 let times = 0
 let list_group = {}
-const arr = props._list.forEach((item, index) => {
-    times < props._col ? times++ : times = 0
-    let _ = { ...item }
-    _[KEY] = index
-    list_group[times] ? list_group[times].push(_) : list_group[times] = [_]
-})
 const _group = ref(list_group)
+init()
+watch(() => props._list,
+    (val) => {
+        init(val)
+    })
+
 </script>
 
 <style scoped lang="scss">

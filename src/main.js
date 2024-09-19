@@ -11,6 +11,15 @@ import com2, {
     message,
     DiaLog
 } from "./package/index"
+
+
+
+import 'highlight.js/styles/atom-one-dark.css'
+import 'highlight.js/lib/common'
+import hljsVuePlugin from '@highlightjs/vue-plugin'
+
+
+
 import func from "./package/utils/index"
 
 // let { checkType, recode } = func
@@ -29,7 +38,7 @@ import router from './router/index'
 import App from './App.vue'
 // import 'animate.css';
 const _ = createApp(App)
-_.use(router).use(com2).mount('#app')
+_.use(router).use(hljsVuePlugin).use(com2).mount('#app')
 
 console.log('--checkType', _t.checkType([], 'array'));
 console.log("--recode(arr, '1,2')", _t.recode(arr, '1,2'));

@@ -1,7 +1,11 @@
 <template>
   <div class="app">
-    <T-button v-for="(item, index) in routes" :key="index" @click="router.push({path:item.path})">{{ item['meta']['title']
+    <T-button v-for="(item, index) in routes" :key="index" @click="router.push({ path: item.path })">{{
+      item['meta']['title']
       }}</T-button>
+    <div>
+    </div>
+
     <router-view></router-view>
   </div>
 </template>
@@ -10,6 +14,7 @@
 import { routes } from './router/index'
 import { useRouter } from "vue-router";
 const router = useRouter()
+
 </script>
 
 <style scoped lang="scss">

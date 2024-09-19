@@ -17,6 +17,13 @@ export const routes = [
             title: "骨架屏"
         }
     },
+    {
+        path: '/tools',
+        component: () => import('../pages/tools.vue'),
+        meta: {
+            title: "全局工具函数"
+        }
+    },
 ]
 
 const router = createRouter({
