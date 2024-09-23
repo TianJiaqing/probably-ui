@@ -1,5 +1,5 @@
 <template>
-    <div class="pages_button">
+    <div class="pages_common">
         <h3>按钮组件</h3>
         <hr>
         <div class="btn_div">
@@ -124,7 +124,7 @@ const open_new_dialog = () => {
 </script>
 
 <style lang='scss' scoped>
-.pages_button {
+.pages_common {
     >.btn_div {
         display: flex;
         align-items: center;

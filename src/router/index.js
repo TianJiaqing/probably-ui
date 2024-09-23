@@ -25,10 +25,10 @@ export const routes = [
         }
     },
     {
-        path: '/button',
-        component: () => import('../pages/button.vue'),
+        path: '/common',
+        component: () => import('../pages/common.vue'),
         meta: {
-            title: "按钮"
+            title: "常用组件"
         }
     },
 ]
