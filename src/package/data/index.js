@@ -22,4 +22,9 @@ export default {
     dialog_title: '暂未充填弹窗标题',
     z: get_z,
     list,
+    emits_name: {
+        dialog: [
+            'click'
+        ]
+    }
 }

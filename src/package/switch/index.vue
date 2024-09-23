@@ -1,29 +1,30 @@
 <template>
-	<div class="switch" @click="_emit" :value="props.modelValue"
-		:class="{ right: props.modelValue,left:! props.modelValue  }" :style="{background:props._background}">
-		<div :style="{ background: props._color }"></div>
+	<div class="switch" @click="_emit" :value="props.modelValue" :class="{ right: status, left: !status }"
+		:style="{ background: props._background }">
+		<div></div>
 	</div>
 </template>
 
 <script>
+// 开关组件
 export default {
 	name: 'TSwitch'
 }
 </script>
 <script setup>
+import { ref } from 'vue';
+
 const props = defineProps({
 	modelValue: {
 		type: [Boolean],
 		default: false
 	},
+	// 开关背景色
 	_background: {
 		type: String,
 		default: ''
 	},
-	_color: {
-		type: String,
-		default: ''
-	},
+	// 开关大小（未实现）
 	_size: {
 		type: String,
 		default: 'medium'
@@ -35,8 +36,14 @@ const emit = defineEmits([
 	'_input', 'update:modelValue'
 ])
 let num = Boolean(props.modelValue)
+const status = ref(num % 2)
+// 更新开关状态
+const update_status = () => {
+	status.value = num % 2
+}
 const _emit = () => {
 	num++
+	update_status()
 	emit("update:modelValue", Boolean(num % 2));
 }
 </script>
