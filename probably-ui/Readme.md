@@ -1,3 +1,10 @@
+## 文档
+```
+本地文档 
+git clone from https://github.com/TianJiaqing/probably-ui.git
+npm install
+npm run dev
+```
 ## 使用
 ```javascript
 import {

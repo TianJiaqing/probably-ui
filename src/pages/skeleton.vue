@@ -10,7 +10,7 @@
                 <T-skeleton _width="150"></T-skeleton>
             </div>
             <div class="line">
-                <T-skeleton _width="300" :_height="item * 10" v-for="item in 7" :key="item"></T-skeleton>
+                <T-skeleton _width="300" :_height="item * 35" v-for="item in 4" :key="item"></T-skeleton>
             </div>
             <div class="list">
                 <T-skeleton _width="100" v-for="item in 10" :key="item" _height="25"></T-skeleton>
@@ -35,8 +35,9 @@
                     <div :style="`height: ${(random() + 1) * 30}px;margin: 10px;`" v-if="loading">
                         <T-skeleton :_width="100" _unit="%" :_height="100"></T-skeleton>
                     </div>
-                    <p :style="`height:calc( ${random() + 1}*30px);background:rgba(0,0,255,.4);padding:0;margin:5px;'`" v-else>
-                        xx内容
+                    <p :style="`height:calc( ${random() + 1}*30px);background:rgba(0,0,255,.4);padding:0;margin:5px;'`"
+                        v-else>
+                        xx内容{{ info.index }}
                     </p>
                 </template>
             </T-waterfallFlow>

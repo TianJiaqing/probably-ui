@@ -61,7 +61,7 @@ const css_style = getObjectStyle(
 }
 
 .t-skeleton {
-    background-color: #ccc;
-    animation: opacity-s 2s linear infinite forwards alternate-reverse;
+    background-color: #bbb;
+    animation: opacity-s 1.5s linear infinite forwards alternate-reverse;
 }
 </style>
