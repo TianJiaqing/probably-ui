@@ -34,11 +34,20 @@
         <div class="btn-div">
             <T-button @click="callback_fn('getObjectStyle')" _type="default">getUrlParam(obj)</T-button>
         </div>
+        <h3>useStorage</h3>
+        <hr>
+        <p>list={{ useStorage_list }}</p>
+        <div class="btn-div">
+            <T-button @click="callback_fn('storage', 'userinfo')" _type="default">storage.userinfo</T-button>
+            <T-button @click="callback_fn('storage', 'token')" _type="default">storage.token</T-button>
+            <T-button @click="callback_fn('update_storage', 'token')" _type="default">更新token为当前日期</T-button>
+        </div>
     </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import storage from './data/storage';
 const list = [1, 2, 3]
 
 const recode_array = ['div1', 'div2', 'div3']
@@ -52,6 +61,10 @@ const getObjectStyle_obj = {
     width: "200px",
     height: "200px",
 }
+
+const useStorage_list = [
+    'token', 'userinfo'
+]
 const callback_fn = (e, info) => {
     const _t = window._t
     const checkType = _t.checkType
@@ -93,6 +106,18 @@ const callback_fn = (e, info) => {
                 window._DiaLog({ _title: "提示", _text: `getObjectStyle(obj)='${res}'` }).then(res => {
                 }).catch()
             }
+            break
+        case "storage": {
+            const res = storage[info]
+            window._DiaLog({ _title: "提示", _text: `本地存储数据中的'${info}'=${res}` }).then(res => {
+            }).catch()
+            break
+        }
+        case "update_storage": {
+            storage[info] = '当前时间是' + (new Date()).toTimeString()
+            window._DiaLog({ _title: "提示", _text: `更新成功` }).then(res => {
+            }).catch()
+        }
             break
         default:
             break;
