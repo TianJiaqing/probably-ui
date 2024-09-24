@@ -1,6 +1,6 @@
 <template>
     <div class="pages_common">
-        <h3>按钮组件</h3>
+        <h3>按钮组件(Button)</h3>
         <hr>
         <div class="btn_div">
             <p>正常状态</p>
@@ -22,7 +22,7 @@
             <p>_type="error"</p>
             <T-button _type="error" :_loading="_loading">error</T-button>
         </div>
-        <h3>开关组件</h3>
+        <h3>开关组件(Switch)</h3>
         <hr>
         <div class="btn_div">
             <p>正常使用</p>
@@ -31,10 +31,10 @@
         </div>
         <div class="btn_div">
             <p>自定义颜色</p>
-            <T-switch v-model="form.switch_demo_1" _background="#f00" />
+            <T-switch v-model="form.switch_demo_2" _background="#f00" />
             <p class="status">当前的值：{{ form.switch_demo_2 }}</p>
         </div>
-        <h3>弹窗组件</h3>
+        <h3>弹窗组件(Dialog)</h3>
         <hr>
         <div class="btn_div">
             <p>正常使用</p>
@@ -59,6 +59,12 @@
         <div class="btn_div">
             <p>一句话唤起一个弹窗</p>
             <T-button @click="open_new_dialog">点击唤起弹窗</T-button>
+        </div>
+        <h3>消息组件(Message)</h3>
+        <hr>
+        <div class="btn_div">
+            <p>正常使用</p>
+            <T-button @click="open_new_message">点击唤起弹窗</T-button>
         </div>
     </div>
 </template>
@@ -119,6 +125,18 @@ const open_new_dialog = () => {
         console.log('点击了确定');
     }).catch(err => {
         console.log('点击了取消');
+    })
+}
+
+
+
+
+const open_new_message = () => {
+    const _message = window._message
+    _message({
+        _title: "消息来了",
+        _duration: 2000,
+        _type: "warning"
     })
 }
 </script>

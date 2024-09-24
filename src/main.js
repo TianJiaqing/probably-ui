@@ -32,7 +32,10 @@ let arr = [1, 2, 3]
 // window.__init = func.init
 window.__message = message
 window._DiaLog = DiaLog
+
+
 window._diaLog = DiaLog
+window._message = message
 
 
 import router from './router/index'

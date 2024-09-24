@@ -1,5 +1,5 @@
 <template>
-  <div class="message animation" ref="message" :style="props._style">
+  <div class="t-message animation" ref="message" :style="props._style">
     <div class="animate-top">
       <span v-if="props._title"
         ><span class="iconfont" :class="classtype"></span
@@ -84,7 +84,7 @@ const init = () => {
 </script>
 
 <style scoped lang="scss">
-.message {
+.t-message {
   position: fixed;
   bottom: 20px;
   left: 50%;
@@ -95,7 +95,7 @@ const init = () => {
 
   > div {
     background-color: var(--t-bg);
-    color: black;
+    color: #666;
     min-width: 400px;
     padding: 0.6em 2em;
     cursor: pointer;

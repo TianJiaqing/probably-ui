@@ -31,6 +31,13 @@ export const routes = [
             title: "常用组件"
         }
     },
+    {
+        path: '/waterfallFlow',
+        component: () => import('../pages/waterfallFlow.vue'),
+        meta: {
+            title: "瀑布流"
+        }
+    },
 ]
 
 const router = createRouter({
