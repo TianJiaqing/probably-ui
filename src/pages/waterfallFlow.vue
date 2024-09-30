@@ -35,8 +35,8 @@ const css_style = (info, type) => {
     if (type == 1) {
         return getObjectStyle(
             {
-                // "--h": random() + 'px',
-                "--h": info % 4 * 40 + 40 + 'px',
+                "--h": random() + 'px',
+                // "--h": info % 4 * 40 + 40 + 'px',
                 "--s": info % 4 * 40 + 40 + 'px',
             }
         )
@@ -57,19 +57,21 @@ const random = () => parseInt(Math.random() * 50 + 150)
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 5px 2.5px;
-        background-color: rgb(89, 138, 138);
+        margin: 10px 5px;
+        background-color: #eee;
         border-radius: 4px;
         padding: 1em;
 
         .txt {
             width: 100%;
-            margin: .2em 0;
+            margin: 1em 0;
+            text-align: center;
         }
 
         .title {
             font-weight: 900;
             font-size: 18px;
+            text-align: center;
         }
 
         .des {
@@ -81,7 +83,9 @@ const random = () => parseInt(Math.random() * 50 + 150)
             height: var(--h);
             width: var(--h);
             // background: var(--img);
+            background-color: #444;
             background-repeat: no-repeat;
+            border-radius: 8 px;
             background-size: 100% 100%;
             background-position: center;
             opacity: .9;

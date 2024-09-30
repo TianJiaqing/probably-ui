@@ -9,6 +9,7 @@ lerna-debug.log*
 
 node_modules
 dist
+probably-ui
 dist-ssr
 *.local
 
