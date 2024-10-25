@@ -26,7 +26,7 @@ const default_options = {
 	// 是否需要注册组件
 	need_component: true,
 	//默认组件名称
-	component_rename:"T-",
+	component_rename: "T-",
 	//默认的弹窗z-index
 	z_index: 1,
 	// custom_callback: (e) => { }
@@ -60,6 +60,10 @@ const need_utils_init = (options) => {
 }
 
 const install = function (Vue, options = default_options) {
+	const v = Vue.version
+	if (v < 3) {
+		return
+	}
 	if (options.need_utils) {
 		need_utils_init(options)
 	}
@@ -74,7 +78,7 @@ const install = function (Vue, options = default_options) {
 		for (const path in modules) {
 			const name = path.split('/').at(-2)?.split('.')[0]
 			const Component = modules[path];
-			Vue.component(`${component_rename}${name}`, Component.default)
+			Vue.component(`${options.component_rename}${name}`, Component.default)
 		}
 		config.z(options.z_index)
 	}

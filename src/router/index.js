@@ -38,6 +38,13 @@ export const routes = [
             title: "瀑布流"
         }
     },
+    {
+        path: '/bgCard',
+        component: () => import('../pages/bgCard.vue'),
+        meta: {
+            title: "背景容器"
+        }
+    },
 ]
 
 const router = createRouter({
