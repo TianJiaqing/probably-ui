@@ -55,6 +55,7 @@ app.use(probablyUi,options).mount('#app')
     <!-- TButton === T-button 两种使用方式都可以 -->
     <TButton @click="message({ _title: '服务器歇菜了；', _type: 'fail' })">别点了</TButton>
     <T-button @click="checkType">checkType</T-button>
+    <T-button @click="getUrlParam">getUrlParam</T-button>
   </div>
 </template>
 
@@ -80,6 +81,29 @@ const checkType = () => {
 
 
 
+}
+
+
+const getUrlParam = () =>{
+
+    // 根据参数的不同，返回不同的结果
+    //1、如果仅有首个参数url，直接返回处理后的结果 {}(Object)
+    //2、如果有第二个参数（且为字符串），返回的是第二个参数对应的结果  ''(String)
+    //3、如果有第二个参数（且为数组），返回的是第二个参数对应的结果的数组 [](Array)
+
+  const url ="http://www.baidu.com?name=tjq&age=18"
+  {
+    const res = _t.getUrlParam(url)
+    console.log(res) // {name: "tjq", age: "18"}
+  }
+  {
+    const res = _t.getUrlParam(url,'name')
+    console.log(res) // tjq
+  }
+  {
+    const res = _t.getUrlParam(url,'name','age')
+    console.log(res) // {name: "tjq", age: "18"}
+  }
 }
 </script>
 
