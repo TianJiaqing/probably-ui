@@ -1,4 +1,4 @@
-组件库源码位置在src/package下
+# 组件库源码位置在src/package下
 # v3版本
 ```
 项目非v3版本，组件不会进行安装注册，仅会挂载utils文件
@@ -140,4 +140,6 @@ T-input   | 输入框
 T-switch | 开关组件
 T-waterfallFlow | 瀑布流布局组件
 T-bgCard | 背景容器组件
+T-tabs | 标签页组件
+
 
