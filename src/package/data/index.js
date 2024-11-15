@@ -26,5 +26,8 @@ export default {
         dialog: [
             'click'
         ]
+    },
+    tabs_options: {
+        label: 'name',
     }
 }

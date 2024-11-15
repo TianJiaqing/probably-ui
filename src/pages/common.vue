@@ -66,6 +66,14 @@
             <p>正常使用</p>
             <T-button @click="open_new_message">点击唤起弹窗</T-button>
         </div>
+        <h3>标签页(Tabs)</h3>
+        <hr>
+        <div class="desc">正常使用 v-model='{{ form.tabs_demo_1 }}'</div>
+        <T-tabs v-model="form.tabs_demo_1" @change="tabs_demo_1_change" :list="tabs_demo_list"></T-tabs>
+        <div class="desc">自定义颜色 大小 v-model='{{ form.tabs_demo_2 }}'</div>
+        <T-tabs v-model="form.tabs_demo_2" :options="{ size: 'max' }" active_class="demo_active_class"
+            :list="tabs_demo_list" line_class="line_class"></T-tabs>
+        <div style="height: 400px;"></div>
     </div>
 </template>
 
@@ -76,14 +84,27 @@ const _defaut = {
     switch_demo_1: false,
     switch_demo_2: false,
 
-
     dialog_demo_1: false,
     dialog_demo_2: false,
     dialog_demo_3: false,
     dialog_demo_4: false,
+    tabs_demo_1: 0,
+    tabs_demo_2: 0,
 
 
 }
+const tabs_demo_list = [
+    {
+        name: '用户管理',
+        id: 1,
+    }, {
+        name: "角色管理",
+        id: 2,
+    }, {
+        name: "3",
+        id: 3,
+    }
+]
 
 
 
@@ -139,6 +160,11 @@ const open_new_message = () => {
         _type: "warning"
     })
 }
+
+const tabs_demo_1_change = (val) => {
+    console.log('tabs_demo_1_change-->', val);
+}
+
 </script>
 
 <style lang='scss' scoped>
@@ -155,6 +181,19 @@ const open_new_message = () => {
         .status {
             margin: 0 1em;
         }
+    }
+
+    .desc {
+        line-height: 2;
+        margin: 1em 0;
+    }
+
+    :deep(.demo_active_class) {
+        color: red;
+    }
+
+    :deep(.line_class) {
+        background-color: blue;
     }
 }
 </style>
