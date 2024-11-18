@@ -53,7 +53,7 @@ app.use(probablyUi,options).mount('#app')
 <template>
   <div>
     <!-- TButton === T-button 两种使用方式都可以 -->
-    <TButton @click="message({ _title: '服务器歇菜了；', _type: 'fail' })">别点了</TButton>
+    <TButton @click="message({ title: '服务器歇菜了；', type: 'fail' })">别点了</TButton>
     <T-button @click="checkType">checkType</T-button>
     <T-button @click="getUrlParam">getUrlParam</T-button>
   </div>

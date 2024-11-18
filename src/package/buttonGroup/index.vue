@@ -1,6 +1,6 @@
 <template>
-	<div class="button_group" :class="`${_class} ${_type}`">
-		<div v-for="(item, index) in _data"
+	<div class="button_group" :class="`${props.class} ${type}`">
+		<div v-for="(item, index) in data"
 			:class="{ focus: currentNum === index, last: (currentNum === index + 1), next: (currentNum === index - 1) }"
 			:key="index" @click="_click(item, index)">
 			{{ key(item) }}
@@ -17,30 +17,30 @@ import data from '../data/index'
 import { computed, ref } from "vue";
 const props = defineProps({
 	//按钮组数据
-	_data: {
+	data: {
 		type: Array,
 		default: () => []
 	},
 	//指定渲染的key值
-	_key: {
+	key: {
 		type: String,
 		default: ''
 	},
 	//按钮组class
-	_class: {
+	class: {
 		type: String,
 		default: ''
 	},
-	_type: {
+	type: {
 		type: String,
 	},
 	//是否禁用相同按钮的多次点击效果
-	_identical: {
+	identical: {
 		type: Boolean,
 		default: true
 	},
 	//默认获取焦点的索引
-	_default: {
+	default: {
 		type: [String, Number],
 		default: 0
 	}
@@ -50,16 +50,16 @@ const emit = defineEmits([
 	'click'
 ])
 
-const currentNum = ref(Number(props._default))
+const currentNum = ref(Number(props.default))
 
 const _click = (item, index) => {
-	if (props._identical && currentNum == index) return
+	if (props.identical && currentNum == index) return
 	currentNum.value = index
 	emit('click', item, index)
 }
 const key = (value) => {
-	if (props._key) {
-		return value[props._key] || data.text
+	if (props.key) {
+		return value[props.key] || data.text
 	} else {
 		return value
 	}

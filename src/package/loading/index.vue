@@ -1,6 +1,6 @@
 <template>
 	<div class="loading" ref="loading">
-		<span class="iconfont icon-jiazai" :class="obj[props._type] || obj.line" :style="{color:props._color}"></span>
+		<span class="iconfont icon-jiazai" :class="obj[props.type] || obj.line" :style="{color:props.color}"></span>
 	</div>
 </template>
 <script>
@@ -11,11 +11,11 @@ export default {
 <script setup>
 import { ref, onMounted } from 'vue'
 const props = defineProps({
-	_type: {
+	type: {
 		default: 'line',
 		type: String
 	},
-	_color: {
+	color: {
 		default: '#18A058',
 		type: String
 	}

@@ -1,12 +1,12 @@
 <template>
-	<span @click="_focus" :class="{ span_focus: is_focus }" v-if="props._title" :style="_title_style">{{ props._title
+	<span @click="_focus" :class="{ span_focus: is_focus }" v-if="props.title" :style="itle_style">{{ props.title
 		}}</span>
-	<textarea :value="props.modelValue" @input="_emit" name="" id="" cols="30" rows="10" :disabled="props._disabled"
-		v-if="props._type === 'textarea'" :class="{ dis: props._disabled }" ref="input" :style="_style"
+	<textarea :value="props.modelValue" @input="_emit" name="" id="" cols="30" rows="10" :disabled="props.disabled"
+		v-if="props.type === 'textarea'" :class="{ dis: props.disabled }" ref="input" :style="style"
 		@focus="is_focus_change(true)" @blur="is_focus_change(false)"></textarea>
-	<input :type="props._type" v-else :class="{ dis: props._disabled }" :value="props.modelValue" @input="_emit"
-		@focus="is_focus_change(true)" @blur="is_focus_change(false)" :disabled="props._disabled" ref="input"
-		:style="_style">
+	<input :type="props.type" v-else :class="{ dis: props.disabled }" :value="props.modelValue" @input="_emit"
+		@focus="is_focus_change(true)" @blur="is_focus_change(false)" :disabled="props.disabled" ref="input"
+		:style="style">
 </template>
 <script>
 export default {
@@ -17,27 +17,27 @@ export default {
 <script setup>
 import { ref } from "vue";
 const props = defineProps({
-	_type: {
+	type: {
 		default: 'text',
 		type: String
 	},
-	_style: {
+	style: {
 		default: '',
 		type: String
 	},
-	_disabled: {
+	disabled: {
 		type: [Boolean, String],
 		default: false
 	},
-	_title: {
+	title: {
 		default: '',
 		type: String
 	},
-	_title_style: {
+	itle_style: {
 		default: '',
 		type: String
 	},
-	_select_title: {
+	select_title: {
 		type: [Boolean, String],
 		default: true
 	},
@@ -83,7 +83,7 @@ defineExpose({
 
 const is_focus = ref(false)
 const is_focus_change = (bool) => {
-	if (props._select_title) {
+	if (props.select_title) {
 		is_focus.value = bool
 	}
 }

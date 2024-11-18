@@ -1,9 +1,9 @@
 <template>
-  <div class="t-message animation" ref="message" :style="props._style">
+  <div class="t-message animation" ref="message" :style="props.style">
     <div class="animate-top">
-      <span v-if="props._title"
+      <span v-if="props.title"
         ><span class="iconfont" :class="classtype"></span
-        >{{ props._title }}</span
+        >{{ props.title }}</span
       >
       <slot v-else></slot>
     </div>
@@ -14,20 +14,20 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 const props = defineProps({
-  _type: {
+  type: {
     default: "success",
     type: String,
   },
-  _style: {
+  style: {
     default: () => ({}),
     type: Object,
   },
-  _title: {
+  title: {
     default: "",
     type: String,
   },
   //不推荐时长小于1000
-  _duration: {
+  duration: {
     default: 1000,
     type: [Number, String],
   },
@@ -63,7 +63,7 @@ const init = () => {
       message.value.classList.remove("animation");
       message.value.classList.add("remove");
       succ(null);
-    }, props._duration);
+    }, props.duration);
   });
 
   //   移除元素
@@ -73,7 +73,7 @@ const init = () => {
       emit("_message", false);
     }, 1000);
   });
-  let info = class_obj[props._type];
+  let info = class_obj[props.type];
   if (info) {
     message.value.style.cssText += `--t-bg:${info["bg"]};`;
     classtype.value = info["class"];

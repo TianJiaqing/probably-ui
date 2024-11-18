@@ -8,19 +8,19 @@
         </div>
         <div class="btn_div">
             <p>加载状态</p>
-            <T-button _type="warning" :_loading="_loading">warning</T-button>
+            <T-button type="warning" :loading="loading">warning</T-button>
         </div>
         <div class="btn_div">
             <p>禁用状态</p>
-            <T-button _type="warning" _disabled>warning</T-button>
+            <T-button type="warning" disabled>warning</T-button>
         </div>
         <div class="btn_div">
-            <p>_type="default"</p>
-            <T-button _type="default">default</T-button>
+            <p>type="default"</p>
+            <T-button type="default">default</T-button>
         </div>
         <div class="btn_div">
-            <p>_type="error"</p>
-            <T-button _type="error" :_loading="_loading">error</T-button>
+            <p>type="error"</p>
+            <T-button type="error" :loading="loading">error</T-button>
         </div>
         <h3>开关组件(Switch)</h3>
         <hr>
@@ -31,7 +31,7 @@
         </div>
         <div class="btn_div">
             <p>自定义颜色</p>
-            <T-switch v-model="form.switch_demo_2" _background="#f00" />
+            <T-switch v-model="form.switch_demo_2" background="#f00" />
             <p class="status">当前的值：{{ form.switch_demo_2 }}</p>
         </div>
         <h3>弹窗组件(Dialog)</h3>
@@ -44,13 +44,13 @@
         <div class="btn_div">
             <p>自定义底部按钮(css&事件&数量)</p>
             <T-button @click="form.dialog_demo_2 = true">点击唤起弹窗</T-button>
-            <T-dialog v-if="form.dialog_demo_2" _title="您需要遵守xx用户协议" @_click="dialog_demo_2_fn"
-                :_button="dialog_demo_2_btn" />
+            <T-dialog v-if="form.dialog_demo_2" title="您需要遵守xx用户协议" @_click="dialog_demo_2_fn"
+                :button="dialog_demo_2_btn" />
         </div>
         <div class="btn_div">
             <p>去掉上方横线</p>
             <T-button @click="form.dialog_demo_3 = true">点击唤起弹窗</T-button>
-            <T-dialog v-if="form.dialog_demo_3" @_click="form.dialog_demo_3 = false" :_line="false">
+            <T-dialog v-if="form.dialog_demo_3" @_click="form.dialog_demo_3 = false" :line="false">
                 <template #default>
                     哎呀，我的线呢？
                 </template>
@@ -79,7 +79,7 @@
 
 <script setup>
 import { ref } from 'vue'
-const _loading = ref(false);
+const loading = ref(false);
 const _defaut = {
     switch_demo_1: false,
     switch_demo_2: false,
@@ -111,7 +111,7 @@ const tabs_demo_list = [
 const form = ref(_defaut)
 
 setInterval(() => {
-    _loading.value = !_loading.value;
+    loading.value = !loading.value;
 }, 5000);
 
 
@@ -139,9 +139,9 @@ const dialog_demo_2_fn = (val) => {
 const open_new_dialog = () => {
     const _dialog = window._diaLog
     _dialog({
-        _title: "window._diaLog",
-        _text: "返回一个promise",
-        _button: dialog_demo_2_btn
+        title: "window._diaLog",
+        text: "返回一个promise",
+        button: dialog_demo_2_btn
     }).then(res => {
         console.log('点击了确定');
     }).catch(err => {
@@ -155,9 +155,9 @@ const open_new_dialog = () => {
 const open_new_message = () => {
     const _message = window._message
     _message({
-        _title: "消息来了",
-        _duration: 2000,
-        _type: "warning"
+        title: "消息来了",
+        duration: 2000,
+        type: "warning"
     })
 }
 

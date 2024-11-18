@@ -8,12 +8,12 @@
 import { ref } from 'vue'
 const props = defineProps({
     // 骨架屏宽度
-    _width: {
+    width: {
         type: [Number, String],
         default: "400"
     },
     // 骨架屏高度
-    _height: {
+    height: {
         type: [Number, String],
         default: "400"
     },
@@ -23,7 +23,7 @@ const props = defineProps({
         default: true
     },
     // 其它css
-    _style: {
+    style: {
         type: Object,
         default: () => ({})
     },
@@ -39,9 +39,9 @@ const getObjectStyle = _t.getObjectStyle
 //object转css
 const css_style = getObjectStyle(
     {
-        width: props._width + props._unit,
-        height: props._height + props._unit,
-        ...props._style
+        width: props.width + props._unit,
+        height: props.height + props._unit,
+        ...props.style
     }
 )
 

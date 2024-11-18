@@ -1,14 +1,14 @@
 <template>
-  <div class="dialog" ref="dialog" :class="{ background: props._class }">
+  <div class="dialog" ref="dialog" :class="{ background: props.class }">
     <div>
-      <div class="line" :class="{ _line: props._line }"></div>
-      <h2 v-if="props._title">{{ props._title }}</h2>
-      <div v-if="!props._text" >
+      <div class="line" :class="{ 'top-line': props.line }"></div>
+      <h2 v-if="props.title">{{ props.title }}</h2>
+      <div v-if="!props.text">
         <slot name="default"></slot>
       </div>
-      <p v-else class="text">{{ props._text }}</p>
+      <p v-else class="text">{{ props.text }}</p>
       <div class="btn">
-        <TButton @click="emitFn(index)" :_type="item.type" v-for="(item, index) in props._button" :key="index">{{
+        <TButton @click="emitFn(index)" :type="item.type" v-for="(item, index) in props.button" :key="index">{{
           item.title
         }}
         </TButton>
@@ -28,27 +28,27 @@ import TButton from "../button/index.vue";
 import data from "../data/index";
 const props = defineProps({
   //dialog左上方标题
-  _title: {
+  title: {
     type: String,
     default: data.dialog_title,
   },
   //dialog展示文字
-  _text: {
+  text: {
     type: String,
     default: "",
   },
   //自定义组件class名称
-  _class: {
+  class: {
     type: Boolean,
     default: true,
   },
   // 是否需要顶部横线
-  _line: {
+  line: {
     type: Boolean,
     default: true,
   },
   // 底部按钮操作栏
-  _button: {
+  button: {
     type: [Array],
     default: () => [{
       //按钮文字
@@ -71,7 +71,7 @@ const props = defineProps({
 const dialog = ref(null);
 const emit = defineEmits(["_click"]);
 const emitFn = (index) => {
-  const info = props._button[index]
+  const info = props.button[index]
   const { keep_dialog, custom_event } = info
   if (custom_event instanceof Function) {
     custom_event()
@@ -133,7 +133,7 @@ onMounted(() => {
     }
   }
 
-  .line {
+  .top-line {
     --x: 4px;
     width: 100%;
     height: var(--x);
@@ -146,7 +146,7 @@ onMounted(() => {
     background-color: #fff;
   }
 
-  ._line {
+  .line {
     background-color: var(--t-theme-color);
   }
 

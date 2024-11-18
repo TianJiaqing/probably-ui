@@ -4,43 +4,43 @@
         <hr>
         <p>list={{ list }}</p>
         <div class="btn-div">
-            <T-button @click="callback_fn('checkType', 'array')" _type="default">checkType(list,'array')</T-button>
-            <T-button @click="callback_fn('checkType', 'Array')" _type="default">checkType(list,'Array')</T-button>
-            <T-button @click="callback_fn('checkType', 'Object')" _type="default">checkType(list,'Object')</T-button>
+            <T-button @click="callback_fn('checkType', 'array')" type="default">checkType(list,'array')</T-button>
+            <T-button @click="callback_fn('checkType', 'Array')" type="default">checkType(list,'Array')</T-button>
+            <T-button @click="callback_fn('checkType', 'Object')" type="default">checkType(list,'Object')</T-button>
         </div>
         <h3>recode</h3>
         <hr>
         <p>list={{ recode_array }}</p>
         <p>obj={{ recode_obj }}</p>
         <div class="btn-div">
-            <T-button @click="callback_fn('recode1', '0')" _type="default">recode(list,'0')</T-button>
-            <T-button @click="callback_fn('recode1', '0,1')" _type="default">recode(list,'0,1')</T-button>
-            <T-button @click="callback_fn('recode1', [0, 1])" _type="default">checkType(list,[0,1])</T-button>
-            <T-button @click="callback_fn('recode2', 'name')" _type="default">recode(obj,'name')</T-button>
-            <T-button @click="callback_fn('recode2', 'name,age')" _type="default">recode(obj,'name,age')</T-button>
+            <T-button @click="callback_fn('recode1', '0')" type="default">recode(list,'0')</T-button>
+            <T-button @click="callback_fn('recode1', '0,1')" type="default">recode(list,'0,1')</T-button>
+            <T-button @click="callback_fn('recode1', [0, 1])" type="default">checkType(list,[0,1])</T-button>
+            <T-button @click="callback_fn('recode2', 'name')" type="default">recode(obj,'name')</T-button>
+            <T-button @click="callback_fn('recode2', 'name,age')" type="default">recode(obj,'name,age')</T-button>
         </div>
         <h3>getUrlParam</h3>
         <hr>
         <p>url={{ getUrlParam_url }}</p>
         <div class="btn-div">
-            <T-button @click="callback_fn('getUrlParam')" _type="default">getUrlParam(url)</T-button>
-            <T-button @click="callback_fn('getUrlParam', 'param1')" _type="default">getUrlParam(url,'param1')</T-button>
+            <T-button @click="callback_fn('getUrlParam')" type="default">getUrlParam(url)</T-button>
+            <T-button @click="callback_fn('getUrlParam', 'param1')" type="default">getUrlParam(url,'param1')</T-button>
             <T-button @click="callback_fn('getUrlParam', ['param1', 'param2'])"
-                _type="default">getUrlParam(url,['param1','param2'])</T-button>
+                type="default">getUrlParam(url,['param1','param2'])</T-button>
         </div>
         <h3>getObjectStyle</h3>
         <hr>
         <p>obj={{ getObjectStyle_obj }}</p>
         <div class="btn-div">
-            <T-button @click="callback_fn('getObjectStyle')" _type="default">getUrlParam(obj)</T-button>
+            <T-button @click="callback_fn('getObjectStyle')" type="default">getUrlParam(obj)</T-button>
         </div>
         <h3>useStorage</h3>
         <hr>
         <p>list={{ useStorage_list }}</p>
         <div class="btn-div">
-            <T-button @click="callback_fn('storage', 'userinfo')" _type="default">storage.userinfo</T-button>
-            <T-button @click="callback_fn('storage', 'token')" _type="default">storage.token</T-button>
-            <T-button @click="callback_fn('update_storage', 'token')" _type="default">更新token为当前日期</T-button>
+            <T-button @click="callback_fn('storage', 'userinfo')" type="default">storage.userinfo</T-button>
+            <T-button @click="callback_fn('storage', 'token')" type="default">storage.token</T-button>
+            <T-button @click="callback_fn('update_storage', 'token')" type="default">更新token为当前日期</T-button>
         </div>
     </div>
 </template>
@@ -75,47 +75,47 @@ const callback_fn = (e, info) => {
         case "checkType":
             {
                 const res = checkType(list, info)
-                window._DiaLog({ _title: "提示", _text: `checkType(list,${info})=${res}` }).then(res => {
+                window._DiaLog({ title: "提示", text: `checkType(list,${info})=${res}` }).then(res => {
                 }).catch()
             }
             break;
         case "recode1":
             {
                 const res = recode(recode_array, info)
-                window._DiaLog({ _title: "提示", _text: `recode(list,${info})=${JSON.stringify(res)}` }).then(res => {
+                window._DiaLog({ title: "提示", text: `recode(list,${info})=${JSON.stringify(res)}` }).then(res => {
                 }).catch()
             }
             break
         case "recode2":
             {
                 const res = recode(recode_obj, info)
-                window._DiaLog({ _title: "提示", _text: `recode(obj,${info})=${JSON.stringify(res)}` }).then(res => {
+                window._DiaLog({ title: "提示", text: `recode(obj,${info})=${JSON.stringify(res)}` }).then(res => {
                 }).catch()
             }
             break
         case "getUrlParam":
             {
                 const res = getUrlParam(getUrlParam_url, info)
-                window._DiaLog({ _title: "提示", _text: `getUrlParam(url,${info})=${JSON.stringify(res)}` }).then(res => {
+                window._DiaLog({ title: "提示", text: `getUrlParam(url,${info})=${JSON.stringify(res)}` }).then(res => {
                 }).catch()
             }
             break
         case "getObjectStyle":
             {
                 const res = getObjectStyle(getObjectStyle_obj)
-                window._DiaLog({ _title: "提示", _text: `getObjectStyle(obj)='${res}'` }).then(res => {
+                window._DiaLog({ title: "提示", text: `getObjectStyle(obj)='${res}'` }).then(res => {
                 }).catch()
             }
             break
         case "storage": {
             const res = storage[info]
-            window._DiaLog({ _title: "提示", _text: `本地存储数据中的'${info}'=${res}` }).then(res => {
+            window._DiaLog({ title: "提示", text: `本地存储数据中的'${info}'=${res}` }).then(res => {
             }).catch()
             break
         }
         case "update_storage": {
             storage[info] = '当前时间是' + (new Date()).toTimeString()
-            window._DiaLog({ _title: "提示", _text: `更新成功` }).then(res => {
+            window._DiaLog({ title: "提示", text: `更新成功` }).then(res => {
             }).catch()
         }
             break

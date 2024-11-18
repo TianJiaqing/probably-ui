@@ -1,6 +1,6 @@
 <template>
-	<p :style="props._style" ref="ellipsis">
-		<span v-if="props._context"></span>
+	<p :style="props.style" ref="ellipsis">
+		<span v-if="props.context"></span>
 		<slot v-else></slot>
 	</p>
 </template>
@@ -12,27 +12,27 @@ export default {
 <script setup>
 import { ref, onMounted, watch } from "vue";
 const props = defineProps({
-	_context: {
+	context: {
 		default: '',
 		type: String
 	},
-	_style: {
+	style: {
 		default: () => ({}),
 		type: Object
 	},
-	_width: {
+	width: {
 		type: [Number, String],
 		default: '200px'
 	},
-	_line: {
+	line: {
 		type: Number,
 		default: 1
 	}
 })
 const ellipsis = ref(null)
 onMounted(() => {
-	ellipsis.value.style['-webkit-line-clamp'] = props._line
-	ellipsis.value.style['width'] = props._width
+	ellipsis.value.style['-webkit-line-clamp'] = props.line
+	ellipsis.value.style['width'] = props.width
 })
 </script>
 

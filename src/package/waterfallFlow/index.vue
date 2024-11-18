@@ -21,12 +21,12 @@ const KEY = "index"
 
 const props = defineProps({
     // 瀑布流数据内容
-    _list: {
+    list: {
         type: Array,
         default: () => []
     },
     // 需要渲染几列
-    _col: {
+    col: {
         type: [Number, String],
         default: 2
     },
@@ -45,11 +45,11 @@ const props = defineProps({
     }
 })
 const init = () => {
-    props._list.forEach((item, index) => {
+    props.list.forEach((item, index) => {
         let _ = { ...item }
         _[KEY] = index
         list_group[times] ? list_group[times].push(_) : list_group[times] = [_]
-        times < props._col ? times++ : times = 0
+        times < props.col ? times++ : times = 0
     })
     _group.value = list_group
 }
@@ -57,7 +57,7 @@ let times = 0
 let list_group = {}
 const _group = ref(list_group)
 init()
-watch(() => props._list,
+watch(() => props.list,
     (val) => {
         init(val)
     })

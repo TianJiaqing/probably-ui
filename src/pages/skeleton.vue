@@ -4,22 +4,22 @@
         <hr>
         <div>
             <div>
-                <T-skeleton _width="300"></T-skeleton>
+                <T-skeleton width="300"></T-skeleton>
             </div>
             <div>
-                <T-skeleton _width="150"></T-skeleton>
+                <T-skeleton width="150"></T-skeleton>
             </div>
             <div class="line">
-                <T-skeleton _width="300" :_height="item * 35" v-for="item in 4" :key="item"></T-skeleton>
+                <T-skeleton width="300" :height="item * 35" v-for="item in 4" :key="item"></T-skeleton>
             </div>
             <div class="list">
-                <T-skeleton _width="100" v-for="item in 10" :key="item" _height="25"></T-skeleton>
+                <T-skeleton width="100" v-for="item in 10" :key="item" height="25"></T-skeleton>
             </div>
             <div class="list">
-                <T-skeleton :_width="item * 50" v-for="item in 9" :key="item" _height="30"></T-skeleton>
+                <T-skeleton :width="item * 50" v-for="item in 9" :key="item" height="30"></T-skeleton>
             </div>
             <div class="round_list list">
-                <T-skeleton :_width="item * 30" v-for="item in 4" :key="item" :_height="item * 30"></T-skeleton>
+                <T-skeleton :width="item * 30" v-for="item in 4" :key="item" :height="item * 30"></T-skeleton>
             </div>
         </div>
         <h3>搭配瀑布流使用</h3>
@@ -30,10 +30,10 @@
             <T-button @click="init">重新演示</T-button>
         </p>
         <div class="waterfallFlow">
-            <T-waterfallFlow :_list="list">
+            <T-waterfallFlow :list="list">
                 <template #default="{ info }">
                     <div :style="`height: ${(random() + 1) * 30}px;margin: 10px;`" v-if="loading">
-                        <T-skeleton :_width="100" _unit="%" :_height="100"></T-skeleton>
+                        <T-skeleton :width="100" _unit="%" :height="100"></T-skeleton>
                     </div>
                     <p :style="`height:calc( ${random() + 1}*30px);background:rgba(0,0,255,.4);padding:0;margin:5px;'`"
                         v-else>

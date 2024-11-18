@@ -1,5 +1,5 @@
 <template>
-    <div class="text-contain" :class="{ _select, _line }" :style="{ '--t-line': _line }">
+    <div class="text-contain" :class="{ _select, line }" :style="{ '--t-line': line }">
         <slot></slot>
     </div>
 </template>
@@ -16,7 +16,7 @@ const props = defineProps({
         default: false,
     },
     //最大溢出文本行，默认0(不溢出)
-    _line: {
+    line: {
         type: Number,
         default: 0,
     },
@@ -32,7 +32,7 @@ const props = defineProps({
         user-select: auto;
     }
 
-    &._line {
+    &.line {
 
         display: -webkit-box;
         -webkit-box-orient: vertical;

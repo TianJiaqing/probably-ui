@@ -1,15 +1,15 @@
 <template>
     <div class="pages_bgCard">
-        <T-bgCard :_url="url_2">
+        <T-bgCard :url="url_2">
             <div class="color_div">
                 <div></div>
                 <div></div>
             </div>
         </T-bgCard>
 
-        <T-bgCard :_url="url"></T-bgCard>
+        <T-bgCard :url="url"></T-bgCard>
 
-        <T-bgCard :_url="url_3" _width="400">
+        <T-bgCard :url="url_3" width="400">
             <div class="card">
                 <div class="title">活动详情</div>
                 <div class="des">1.用户一旦领取不能更换</div>

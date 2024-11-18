@@ -1,12 +1,12 @@
 <template>
   <T-button @click="fn">数据调试</T-button>
-  <div class="t-list custom-scroll" :class="{ 't-fictitious': props._type == 1 }" @scroll="list_scroll">
+  <div class="t-list custom-scroll" :class="{ 't-fictitious': props.type == 1 }" @scroll="list_scroll">
     <div class="t-list-contain" ref="list_contain">
       <div v-for="(item, index) in list" :key="index" @click="$emit('_select', item)" ref="list_ref">
         <slot name="default" :info="item"></slot>
       </div>
     </div>
-    <div v-if="props._type == 1" class="t-fictitious-contain" ref="list_fictitious"></div>
+    <div v-if="props.type == 1" class="t-fictitious-contain" ref="list_fictitious"></div>
   </div>
 </template>
 
@@ -22,11 +22,11 @@ const props = defineProps({
     type: Number,
     default: 3,
   },
-  _type: {
+  type: {
     type: String,
     default: "1",
   },
-  _list: {
+  list: {
     type: Array,
     default: () => [],
   },
@@ -43,11 +43,11 @@ const list_fictitious = ref(null);
 const list_ref = ref([]);
 
 onMounted(() => {
-  const { _list, _type } = JSON.parse(JSON.stringify(props));
-  if (!_list.length) return;
-  if (_type == info[0]) {
+  const { list, type } = JSON.parse(JSON.stringify(props));
+  if (!list.length) return;
+  if (type == info[0]) {
     use_animation_frame();
-  } else if (_type == info[1]) {
+  } else if (type == info[1]) {
     use_fictitious_list();
     set_list(slice_list());
   }
@@ -55,14 +55,14 @@ onMounted(() => {
 
 // 方案一，优点：按照帧来进行渲染，也是最便捷的手段！缺点：数据量>30k时（以普通电脑为例），仍会造成页面卡顿
 const use_animation_frame = () => {
-  const { _list } = JSON.parse(JSON.stringify(props));
+  const { list } = JSON.parse(JSON.stringify(props));
   const num = 500;
-  if (_list.length == 0) return;
+  if (list.length == 0) return;
   const _init = () => {
-    if (_list.length == 0) {
+    if (list.length == 0) {
       cancelAnimationFrame(callback);
     } else {
-      list.value.push(..._list.splice(0, num));
+      list.value.push(...list.splice(0, num));
       requestAnimationFrame(_init);
     }
   };
@@ -78,20 +78,20 @@ let height = 51;
 // 当前的缓存数据
 let cache_info = [];
 const use_fictitious_list = () => {
-  const { _list } = JSON.parse(JSON.stringify(props));
+  const { list } = JSON.parse(JSON.stringify(props));
   start_dom = 0;
   end_dom = size;
-  list_fictitious.value.style = `height:${_list.length * height}px;`;
+  list_fictitious.value.style = `height:${list.length * height}px;`;
 };
 
 //设置list、渲染list
 const set_list = (e) => (list.value = e);
 
-//截取props._list
+//截取props.list
 const slice_list = (
   start = start_dom,
   end = end_dom,
-  list = JSON.parse(JSON.stringify(props._list))
+  list = JSON.parse(JSON.stringify(props.list))
 ) => list.slice(start, end);
 
 //更新缓存信息
@@ -113,13 +113,13 @@ const update_cache_info = (start = start_dom, scrollTop) => {
   });
 
   list_fictitious.value.style = `height:${(cache_info.at(-1).h || 0) +
-    (props._list.length - cache_info.length) * height
+    (props.list.length - cache_info.length) * height
     }px;`;
 };
 
 // 设置开始、结束索引
 const update_info = (start, scrollTop) => {
-  const len = props._list.length;
+  const len = props.list.length;
   if (start >= len) {
     start = len;
   }
@@ -165,7 +165,7 @@ const list_scroll = (e) => {
   //     set_time = null;
   //   }, time);
   // }
-  if (props._type == info[1]) {
+  if (props.type == info[1]) {
     const { scrollTop } = e.currentTarget;
     console.log("scrollTop--->>", scrollTop); //39000
     // 1、固定高度

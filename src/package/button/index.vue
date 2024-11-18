@@ -1,9 +1,9 @@
 <template>
   <div class="button">
-    <button @click="_emit" :class="`${props._type} ${props._size} ${_disabled ? 'disabled' : _loading ? '' : 'common'} `"
-      :style="_style">
+    <button @click="_emit" :class="`${props.type} ${props.size} ${disabled ? 'disabled' : loading ? '' : 'common'} `"
+      :style="style">
       <div>
-        <span class="iconfont icon-jiazai1" v-if="_loading"></span>
+        <span class="iconfont icon-jiazai1" v-if="loading"></span>
         <slot></slot>
       </div>
     </button>
@@ -17,34 +17,34 @@ export default {
 <script setup>
 import { ref } from "vue";
 const props = defineProps({
-  _type: {
+  type: {
     default: "primary",
     type: String,
   },
-  _size: {
+  size: {
     default: "medium",
     type: String,
   },
-  _style: {
+  style: {
     default: "",
     type: String,
   },
-  _loading: {
+  loading: {
     default: false,
     type: Boolean,
   },
-  _disabled: {
+  disabled: {
     default: false,
     type: Boolean
   },
-  _space: {
+  space: {
     default: 'inline-block',
     type: String,
   }
 });
 const emit = defineEmits(["click"]);
 const _emit = () => {
-  !props._disabled && !props._loading && emit("click")
+  !props.disabled && !props.loading && emit("click")
 };
 </script>
 

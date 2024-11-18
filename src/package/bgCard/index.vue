@@ -15,22 +15,22 @@ import { ref, onMounted } from 'vue';
 
 const props = defineProps({
     // 设置容器宽度，默认为图片的宽度
-    _width: {
+    width: {
         type: [String, Number],
         default: 0
     },
     // 默认高度，仅在图片失效时启用
-    _height: {
+    height: {
         type: [String, Number],
         default: 200
     },
     // 图片地址
-    _url: {
+    url: {
         type: String,
         default: null
     },
     // 图片比例模式
-    _mode: {
+    mode: {
         type: String,
         default: "widthFix"
     }
@@ -39,23 +39,23 @@ const contain = ref(null)
 
 
 onMounted(() => {
-    const { _width, _height, _url } = props
-    if (_url) {
+    const { width, height, url } = props
+    if (url) {
         const img = new Image()
-        img.src = _url
+        img.src = url
         img.onload = (e) => {
             const { width, height } = img
-            if (_width) {
-                const h = _width * height / width
-                set_style(_width, h, _url)
+            if (width) {
+                const h = width * height / width
+                set_style(width, h, url)
 
             } else {
-                set_style(width, height, _url)
+                set_style(width, height, url)
 
             }
         }
         img.onerror = (e) => {
-            set_style(_width, _height, null)
+            set_style(width, height, null)
         }
     }
 })

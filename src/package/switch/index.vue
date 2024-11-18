@@ -1,6 +1,6 @@
 <template>
 	<div class="switch" @click="_emit" :value="props.modelValue" :class="{ right: status, left: !status }"
-		:style="{ background: props._background }">
+		:style="{ background: props.background }">
 		<div></div>
 	</div>
 </template>
@@ -20,12 +20,12 @@ const props = defineProps({
 		default: false
 	},
 	// 开关背景色
-	_background: {
+	background: {
 		type: String,
 		default: ''
 	},
 	// 开关大小（未实现）
-	_size: {
+	size: {
 		type: String,
 		default: 'medium'
 	}

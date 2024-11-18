@@ -3,7 +3,7 @@
         <h3>正常使用</h3>
         <hr>
         <div>
-            <T-waterfallFlow :_list="list" _col="5">
+            <T-waterfallFlow :list="list" col="5">
                 <template #default="{ info }">
                     <div class="card" :style="css_style(info.index, 1)">
                         <div class="img" :style="css_style(info.img, 2)"></div>
