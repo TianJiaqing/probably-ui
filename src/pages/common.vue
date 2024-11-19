@@ -64,7 +64,7 @@
         <hr>
         <div class="btn_div">
             <p>正常使用</p>
-            <T-button @click="open_new_message">点击唤起弹窗</T-button>
+            <T-button @click="open_new_message">点击唤起Message</T-button>
         </div>
         <h3>标签页(Tabs)</h3>
         <hr>
@@ -193,7 +193,7 @@ const tabs_demo_1_change = (val) => {
     }
 
     :deep(.line_class) {
-        background-color: blue;
+        background-color: red;
     }
 }
 </style>

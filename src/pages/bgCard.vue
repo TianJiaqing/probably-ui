@@ -17,6 +17,12 @@
             </div>
         </T-bgCard>
     </div>
+    <hr>
+    <div class="pages_bgCard_bottom">
+        <p>上面的东西作用？</p>
+        <p>页面开发过程中,遇到由背景图来控制整个容器的大小时,便可以用这个</p>
+        <p>tips：由于图片一开始并未加载完成，因此需要给一个默认高度，该高度仅会在图片未加载完成或图片加载失败时被使用</p>
+    </div>
 </template>
 
 <script setup>
@@ -64,5 +70,8 @@ const url_3 =
             background-color: green;
         }
     }
+}
+.pages_bgCard_bottom{
+    font-size: 18px;
 }
 </style>
