@@ -9,10 +9,13 @@ const checkType = $.checkType
  * @returns {} || [] || String - 拼接重组完成后的内容，依据key值的填写内容决定
  */
 const getUrlParam = (url, key) => {
+    if (!url) {
+        return {}
+    }
     //demo url:https://abc123.com/?param1=value1&param2=value2
     const list = url.split('?')
-    if (list.length > 2) {
-        console.error('function:getUrlParam error!')
+    if (list.length > 2 || list.length < 2) {
+        console.warn('function:getUrlParam warn! url is no params')
         return {}
     } else {
         try {
