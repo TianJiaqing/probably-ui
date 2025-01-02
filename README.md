@@ -35,7 +35,7 @@ const options = {
 	// },
 	// 是否需要注册组件
 	need_component: true,
-	//默认弹窗初始的z-index
+	//默认弹窗初始的z-index，防止弹窗层级过低，或者被其它组件库遮挡
 	z_index: 1,
     //自定义事件，在组件使用或注册时会触发该回调函数（未实装，可忽略）
 	// custom_callback: (e) => { }

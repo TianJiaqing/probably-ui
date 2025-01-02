@@ -37,7 +37,7 @@
                     </div>
                     <p :style="`height:calc( ${random() + 1}*30px);background:rgba(0,0,255,.4);padding:0;margin:5px;'`"
                         v-else>
-                        xx内容{{ info.index }}
+                        卡片内容{{ info.index }}
                     </p>
                 </template>
             </T-waterfallFlow>
