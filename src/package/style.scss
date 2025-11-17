@@ -15,12 +15,11 @@
   }
 
   80% {
-    opacity: .6;
+    opacity: 0.6;
   }
 
   100% {
     opacity: 0;
-
   }
 }
 
@@ -31,27 +30,22 @@
   }
 
   20% {
-    opacity: .6;
+    opacity: 0.6;
   }
 
   100% {
     opacity: 1;
-
   }
 }
 
 /* 尺寸放大出现 */
 @keyframes size_show {
   0% {
-    transform: scale(.2);
+    transform: scale(0.2);
   }
-
-
 
   100% {
     transform: scale(1);
-
-
   }
 }
 
@@ -59,8 +53,7 @@
   0% {
     top: 80%;
     opacity: 0;
-    transform: translateX(-50%) scale(.3);
-
+    transform: translateX(-50%) scale(0.3);
   }
 
   70% {
@@ -73,8 +66,6 @@
     transform: translateX(-50%) scale(1);
   }
 }
-
-
 
 .inline-block {
   display: inline-block;
@@ -89,16 +80,16 @@
 }
 
 body {
-  --t-color: rgba(0, 128, 0, .2);
-  --t-bg: rgba(0, 128, 0, .2);
+  --t-color: rgba(0, 128, 0, 0.2);
+  --t-bg: rgba(0, 128, 0, 0.2);
   /* 默认主题 */
   --t-theme-color: #18a058;
   --t-theme-bg: #fff;
-  --t-theme-hover: rgba(0, 0, 0, .3);
+  --t-theme-hover: rgba(0, 0, 0, 0.3);
   --t-theme-shadow: rgba(52, 213, 11, 0.1);
   --t-theme-text-color: #000;
   /* 空状态 */
-  --t-theme-empty:#ddd;
+  --t-theme-empty: #ddd;
   /* 默认z-index */
   --t-z-index: 1;
   /* 默认间距（左右） */
@@ -106,10 +97,10 @@ body {
 }
 
 .custom-scroll {
-
   /* 自定义整个滚动条 */
   &::-webkit-scrollbar {
     width: 8px;
+    height: 6px;
     /* 设置滚动条的宽度 */
     background-color: #f9f9f9;
     /* 滚动条的背景色 */
@@ -137,5 +128,11 @@ body {
   &::-webkit-scrollbar-thumb:hover {
     background: #a8a8a8;
     /* 滑块hover时的背景色 */
+  }
+}
+
+.hidden-scroll {
+  &::-webkit-scrollbar {
+    display: none;
   }
 }

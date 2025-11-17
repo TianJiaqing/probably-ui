@@ -5,7 +5,8 @@ import './style.css'
 // import './iconfont.css'
 // import com from '../build/my-lib.js'
 import com from "probably-ui"
-import "probably-ui/style.css";
+// import "probably-ui/style.css";
+import './package/style.scss'
 // import '../build/style.css'
 import com2, {
     message,

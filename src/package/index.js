@@ -5,7 +5,7 @@ import { DiaLog } from './dialog/index.js'
 import utils from "./utils/index"
 import config from './data/index'
 
-import "./style.css"
+import "./style.scss"
 
 const modules = import.meta.glob('../package/**/*.vue', { eager: true })
 

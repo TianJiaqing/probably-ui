@@ -73,6 +73,19 @@
         <div class="desc">自定义颜色 大小 v-model='{{ form.tabs_demo_2 }}'</div>
         <T-tabs v-model="form.tabs_demo_2" :options="{ size: 'max' }" active_class="demo_active_class"
             :list="tabs_demo_list" line_class="line_class"></T-tabs>
+
+        <div class="desc">超出宽度处理 v-model='{{ form.tabs_demo_3 }}'</div>
+        <T-tabs v-model="form.tabs_demo_3" :options="{ size: 'max' }" active_class="demo_active_class"
+            :list="tabs_demo_list_3" line_class="line_class"></T-tabs>
+        <div class="desc">自定义插槽 v-model='{{ form.tabs_demo_3 }}'</div>
+        <T-tabs v-model="form.tabs_demo_3" :options="{ size: 'max' }" active_class="demo_active_class"
+            :show_line="false" :list="tabs_demo_list_3" line_class="line_class">
+            <template #default="{ item, index }">
+                <div class="tab_item_slot" :class="{ tab_item_active: index === form.tabs_demo_3 }">
+                    {{ item.name }}
+                </div>
+            </template>
+        </T-tabs>
         <div style="height: 400px;"></div>
     </div>
 </template>
@@ -90,6 +103,7 @@ const _defaut = {
     dialog_demo_4: false,
     tabs_demo_1: 0,
     tabs_demo_2: 0,
+    tabs_demo_3: 0,
 
 
 }
@@ -105,7 +119,57 @@ const tabs_demo_list = [
         id: 3,
     }
 ]
-
+const tabs_demo_list_3 = [
+    {
+        name: '迪迦',
+        id: 1,
+    }, {
+        name: "泰罗",
+        id: 2,
+    }, {
+        name: "梦比优斯",
+        id: 3,
+    }, {
+        name: "贝利亚",
+        id: 4,
+    }, {
+        name: "戴拿",
+        id: 5,
+    }, {
+        name: "高斯",
+        id: 6,
+    }, {
+        name: "捷德",
+        id: 7,
+    },
+    {
+        name: "诺亚",
+        id: 8,
+    }, {
+        name: "雷欧",
+        id: 9,
+    },
+    {
+        name: "不知名1",
+        id: 10,
+    }, {
+        name: "不知名2",
+        id: 11,
+    },
+    {
+        name: "不知名3",
+        id: 12,
+    }, {
+        name: "不知名4",
+        id: 13,
+    }, {
+        name: "不知名5",
+        id: 14,
+    }, {
+        name: "不知名6",
+        id: 15,
+    }
+]
 
 
 const form = ref(_defaut)
@@ -194,6 +258,48 @@ const tabs_demo_1_change = (val) => {
 
     :deep(.line_class) {
         background-color: red;
+    }
+
+    .tab_item_slot {
+        padding: 8px 12px;
+    }
+
+    .tab_item_active {
+        position: relative;
+        background-color: #18a058;
+        font-weight: 700;
+        color: #fff;
+        border-radius: 8px 8px 0 0;
+
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: -14px;
+            width: 14px;
+            display: block;
+            height: 14px;
+            background-color: #f2f2f2;
+            // border-radius: 0 0 16rpx 16rpx;
+            background: radial-gradient(circle at 0 0,
+                    transparent 14px,
+                    #18a058 15px);
+        }
+
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 0;
+            right: -14px;
+            width: 14px;
+            height: 14px;
+            background-color: #f2f2f2;
+            // border-radius: 0 0 16rpx 16rpx;
+            background: radial-gradient(circle at right 0,
+                    transparent 14px,
+                    #18a058 15px);
+        }
     }
 }
 </style>
